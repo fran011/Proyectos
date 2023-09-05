@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\User\Desktop\Facultad\Informatica\Taller de Lenguajes II\COLOQUIO\Entrega 3\Entregable\.metadata\.plugins\org.eclipse.jdt.core
+1067094681.index
+766581317.index

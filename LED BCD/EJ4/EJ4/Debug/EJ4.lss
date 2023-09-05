@@ -1,0 +1,558 @@
+
+EJ4.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000a  00800100  00000362  000003d6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000362  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000003e0  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000410  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000038  00000000  00000000  00000450  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000a5b  00000000  00000000  00000488  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000772  00000000  00000000  00000ee3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000003ea  00000000  00000000  00001655  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000084  00000000  00000000  00001a40  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000043c  00000000  00000000  00001ac4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000004c3  00000000  00000000  00001f00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000028  00000000  00000000  000023c3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 e6       	ldi	r30, 0x62	; 98
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	aa 30       	cpi	r26, 0x0A	; 10
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 54 01 	call	0x2a8	; 0x2a8 <main>
+  8e:	0c 94 af 01 	jmp	0x35e	; 0x35e <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <debounce>:
+const uint8_t BCDTABLE[10] = {0b00111111, 0b00000110, 0b01011011, 0b01001111, 0b01100110, 0b01101101, 0b01111101, 0b00000111, 0b01111111, 0b01101111};
+
+
+//Anti rebote
+uint8_t debounce(uint8_t pin){
+	if(!(PIND & (1<<pin))){
+  96:	29 b1       	in	r18, 0x09	; 9
+  98:	48 2f       	mov	r20, r24
+  9a:	30 e0       	ldi	r19, 0x00	; 0
+  9c:	b9 01       	movw	r22, r18
+  9e:	02 c0       	rjmp	.+4      	; 0xa4 <debounce+0xe>
+  a0:	75 95       	asr	r23
+  a2:	67 95       	ror	r22
+  a4:	8a 95       	dec	r24
+  a6:	e2 f7       	brpl	.-8      	; 0xa0 <debounce+0xa>
+  a8:	60 fd       	sbrc	r22, 0
+  aa:	1e c0       	rjmp	.+60     	; 0xe8 <debounce+0x52>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  ac:	7f ef       	ldi	r23, 0xFF	; 255
+  ae:	89 ef       	ldi	r24, 0xF9	; 249
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	71 50       	subi	r23, 0x01	; 1
+  b4:	80 40       	sbci	r24, 0x00	; 0
+  b6:	90 40       	sbci	r25, 0x00	; 0
+  b8:	e1 f7       	brne	.-8      	; 0xb2 <debounce+0x1c>
+  ba:	00 c0       	rjmp	.+0      	; 0xbc <debounce+0x26>
+  bc:	00 00       	nop
+		_delay_ms(20);
+		while(!(PIND & (1<<pin)));
+  be:	89 b1       	in	r24, 0x09	; 9
+  c0:	90 e0       	ldi	r25, 0x00	; 0
+  c2:	04 2e       	mov	r0, r20
+  c4:	02 c0       	rjmp	.+4      	; 0xca <debounce+0x34>
+  c6:	95 95       	asr	r25
+  c8:	87 95       	ror	r24
+  ca:	0a 94       	dec	r0
+  cc:	e2 f7       	brpl	.-8      	; 0xc6 <debounce+0x30>
+  ce:	80 ff       	sbrs	r24, 0
+  d0:	f6 cf       	rjmp	.-20     	; 0xbe <debounce+0x28>
+  d2:	2f ef       	ldi	r18, 0xFF	; 255
+  d4:	69 ef       	ldi	r22, 0xF9	; 249
+  d6:	70 e0       	ldi	r23, 0x00	; 0
+  d8:	21 50       	subi	r18, 0x01	; 1
+  da:	60 40       	sbci	r22, 0x00	; 0
+  dc:	70 40       	sbci	r23, 0x00	; 0
+  de:	e1 f7       	brne	.-8      	; 0xd8 <debounce+0x42>
+  e0:	00 c0       	rjmp	.+0      	; 0xe2 <debounce+0x4c>
+  e2:	00 00       	nop
+		_delay_ms(20);
+		return 1;
+  e4:	81 e0       	ldi	r24, 0x01	; 1
+  e6:	08 95       	ret
+	}
+	return 0;
+  e8:	80 e0       	ldi	r24, 0x00	; 0
+}
+  ea:	08 95       	ret
+
+000000ec <separarDigitos>:
+
+
+
+
+// Obtener centesima de segundo, segundo, decima y centesima del contador;
+void separarDigitos(uint16_t* contador, uint8_t* digito1, uint8_t* digito2, uint8_t* digito3, uint8_t* digito4) {
+  ec:	ef 92       	push	r14
+  ee:	ff 92       	push	r15
+  f0:	0f 93       	push	r16
+  f2:	1f 93       	push	r17
+  f4:	cf 93       	push	r28
+  f6:	df 93       	push	r29
+  f8:	7b 01       	movw	r14, r22
+  fa:	e9 01       	movw	r28, r18
+	uint16_t aux = 0;
+	aux = *contador;
+  fc:	dc 01       	movw	r26, r24
+  fe:	ed 91       	ld	r30, X+
+ 100:	fc 91       	ld	r31, X
+	if(aux != 0){
+ 102:	30 97       	sbiw	r30, 0x00	; 0
+ 104:	39 f1       	breq	.+78     	; 0x154 <separarDigitos+0x68>
+		*digito1 = aux % 10;
+ 106:	9f 01       	movw	r18, r30
+ 108:	ad ec       	ldi	r26, 0xCD	; 205
+ 10a:	bc ec       	ldi	r27, 0xCC	; 204
+ 10c:	0e 94 a0 01 	call	0x340	; 0x340 <__umulhisi3>
+ 110:	96 95       	lsr	r25
+ 112:	87 95       	ror	r24
+ 114:	96 95       	lsr	r25
+ 116:	87 95       	ror	r24
+ 118:	96 95       	lsr	r25
+ 11a:	87 95       	ror	r24
+ 11c:	9c 01       	movw	r18, r24
+ 11e:	22 0f       	add	r18, r18
+ 120:	33 1f       	adc	r19, r19
+ 122:	88 0f       	add	r24, r24
+ 124:	99 1f       	adc	r25, r25
+ 126:	88 0f       	add	r24, r24
+ 128:	99 1f       	adc	r25, r25
+ 12a:	88 0f       	add	r24, r24
+ 12c:	99 1f       	adc	r25, r25
+ 12e:	82 0f       	add	r24, r18
+ 130:	93 1f       	adc	r25, r19
+ 132:	9f 01       	movw	r18, r30
+ 134:	28 1b       	sub	r18, r24
+ 136:	39 0b       	sbc	r19, r25
+ 138:	d7 01       	movw	r26, r14
+ 13a:	2c 93       	st	X, r18
+		aux = aux / 10;
+ 13c:	9f 01       	movw	r18, r30
+ 13e:	ad ec       	ldi	r26, 0xCD	; 205
+ 140:	bc ec       	ldi	r27, 0xCC	; 204
+ 142:	0e 94 a0 01 	call	0x340	; 0x340 <__umulhisi3>
+ 146:	fc 01       	movw	r30, r24
+ 148:	f6 95       	lsr	r31
+ 14a:	e7 95       	ror	r30
+ 14c:	f6 95       	lsr	r31
+ 14e:	e7 95       	ror	r30
+ 150:	f6 95       	lsr	r31
+ 152:	e7 95       	ror	r30
+	}
+	if(aux !=0){
+ 154:	30 97       	sbiw	r30, 0x00	; 0
+ 156:	39 f1       	breq	.+78     	; 0x1a6 <separarDigitos+0xba>
+		*digito2 = aux % 10;
+ 158:	9f 01       	movw	r18, r30
+ 15a:	ad ec       	ldi	r26, 0xCD	; 205
+ 15c:	bc ec       	ldi	r27, 0xCC	; 204
+ 15e:	0e 94 a0 01 	call	0x340	; 0x340 <__umulhisi3>
+ 162:	96 95       	lsr	r25
+ 164:	87 95       	ror	r24
+ 166:	96 95       	lsr	r25
+ 168:	87 95       	ror	r24
+ 16a:	96 95       	lsr	r25
+ 16c:	87 95       	ror	r24
+ 16e:	9c 01       	movw	r18, r24
+ 170:	22 0f       	add	r18, r18
+ 172:	33 1f       	adc	r19, r19
+ 174:	88 0f       	add	r24, r24
+ 176:	99 1f       	adc	r25, r25
+ 178:	88 0f       	add	r24, r24
+ 17a:	99 1f       	adc	r25, r25
+ 17c:	88 0f       	add	r24, r24
+ 17e:	99 1f       	adc	r25, r25
+ 180:	82 0f       	add	r24, r18
+ 182:	93 1f       	adc	r25, r19
+ 184:	9f 01       	movw	r18, r30
+ 186:	28 1b       	sub	r18, r24
+ 188:	39 0b       	sbc	r19, r25
+ 18a:	da 01       	movw	r26, r20
+ 18c:	2c 93       	st	X, r18
+		aux = aux / 10;
+ 18e:	9f 01       	movw	r18, r30
+ 190:	ad ec       	ldi	r26, 0xCD	; 205
+ 192:	bc ec       	ldi	r27, 0xCC	; 204
+ 194:	0e 94 a0 01 	call	0x340	; 0x340 <__umulhisi3>
+ 198:	fc 01       	movw	r30, r24
+ 19a:	f6 95       	lsr	r31
+ 19c:	e7 95       	ror	r30
+ 19e:	f6 95       	lsr	r31
+ 1a0:	e7 95       	ror	r30
+ 1a2:	f6 95       	lsr	r31
+ 1a4:	e7 95       	ror	r30
+	}
+	if(aux != 0){
+ 1a6:	30 97       	sbiw	r30, 0x00	; 0
+ 1a8:	21 f1       	breq	.+72     	; 0x1f2 <separarDigitos+0x106>
+		*digito3 = aux % 10;
+ 1aa:	9f 01       	movw	r18, r30
+ 1ac:	ad ec       	ldi	r26, 0xCD	; 205
+ 1ae:	bc ec       	ldi	r27, 0xCC	; 204
+ 1b0:	0e 94 a0 01 	call	0x340	; 0x340 <__umulhisi3>
+ 1b4:	96 95       	lsr	r25
+ 1b6:	87 95       	ror	r24
+ 1b8:	96 95       	lsr	r25
+ 1ba:	87 95       	ror	r24
+ 1bc:	96 95       	lsr	r25
+ 1be:	87 95       	ror	r24
+ 1c0:	9c 01       	movw	r18, r24
+ 1c2:	22 0f       	add	r18, r18
+ 1c4:	33 1f       	adc	r19, r19
+ 1c6:	88 0f       	add	r24, r24
+ 1c8:	99 1f       	adc	r25, r25
+ 1ca:	88 0f       	add	r24, r24
+ 1cc:	99 1f       	adc	r25, r25
+ 1ce:	88 0f       	add	r24, r24
+ 1d0:	99 1f       	adc	r25, r25
+ 1d2:	82 0f       	add	r24, r18
+ 1d4:	93 1f       	adc	r25, r19
+ 1d6:	9f 01       	movw	r18, r30
+ 1d8:	28 1b       	sub	r18, r24
+ 1da:	39 0b       	sbc	r19, r25
+ 1dc:	28 83       	st	Y, r18
+		aux = aux / 10;
+ 1de:	9f 01       	movw	r18, r30
+ 1e0:	0e 94 a0 01 	call	0x340	; 0x340 <__umulhisi3>
+ 1e4:	fc 01       	movw	r30, r24
+ 1e6:	f6 95       	lsr	r31
+ 1e8:	e7 95       	ror	r30
+ 1ea:	f6 95       	lsr	r31
+ 1ec:	e7 95       	ror	r30
+ 1ee:	f6 95       	lsr	r31
+ 1f0:	e7 95       	ror	r30
+	}
+	if(aux != 0){
+ 1f2:	30 97       	sbiw	r30, 0x00	; 0
+ 1f4:	d9 f0       	breq	.+54     	; 0x22c <separarDigitos+0x140>
+		*digito4 = aux % 10;
+ 1f6:	9f 01       	movw	r18, r30
+ 1f8:	ad ec       	ldi	r26, 0xCD	; 205
+ 1fa:	bc ec       	ldi	r27, 0xCC	; 204
+ 1fc:	0e 94 a0 01 	call	0x340	; 0x340 <__umulhisi3>
+ 200:	96 95       	lsr	r25
+ 202:	87 95       	ror	r24
+ 204:	96 95       	lsr	r25
+ 206:	87 95       	ror	r24
+ 208:	96 95       	lsr	r25
+ 20a:	87 95       	ror	r24
+ 20c:	9c 01       	movw	r18, r24
+ 20e:	22 0f       	add	r18, r18
+ 210:	33 1f       	adc	r19, r19
+ 212:	88 0f       	add	r24, r24
+ 214:	99 1f       	adc	r25, r25
+ 216:	88 0f       	add	r24, r24
+ 218:	99 1f       	adc	r25, r25
+ 21a:	88 0f       	add	r24, r24
+ 21c:	99 1f       	adc	r25, r25
+ 21e:	82 0f       	add	r24, r18
+ 220:	93 1f       	adc	r25, r19
+ 222:	df 01       	movw	r26, r30
+ 224:	a8 1b       	sub	r26, r24
+ 226:	b9 0b       	sbc	r27, r25
+ 228:	f8 01       	movw	r30, r16
+ 22a:	a0 83       	st	Z, r26
+	}
+}
+ 22c:	df 91       	pop	r29
+ 22e:	cf 91       	pop	r28
+ 230:	1f 91       	pop	r17
+ 232:	0f 91       	pop	r16
+ 234:	ff 90       	pop	r15
+ 236:	ef 90       	pop	r14
+ 238:	08 95       	ret
+
+0000023a <showDisplays>:
+
+
+// Por cada DELAY ms, muestro el valor que le corresponde a cada digito en el dispositivo de 7 segmentos.
+void showDisplays(int digito1, int digito2, int digito3, int digito4){
+	PORTB = BCDTABLE[digito1];
+ 23a:	80 50       	subi	r24, 0x00	; 0
+ 23c:	9f 4f       	sbci	r25, 0xFF	; 255
+ 23e:	fc 01       	movw	r30, r24
+ 240:	90 81       	ld	r25, Z
+ 242:	95 b9       	out	0x05, r25	; 5
+	PORTC = 0b00000001;
+ 244:	81 e0       	ldi	r24, 0x01	; 1
+ 246:	88 b9       	out	0x08, r24	; 8
+ 248:	ef e0       	ldi	r30, 0x0F	; 15
+ 24a:	f7 e2       	ldi	r31, 0x27	; 39
+ 24c:	31 97       	sbiw	r30, 0x01	; 1
+ 24e:	f1 f7       	brne	.-4      	; 0x24c <showDisplays+0x12>
+ 250:	00 c0       	rjmp	.+0      	; 0x252 <showDisplays+0x18>
+ 252:	00 00       	nop
+	_delay_ms(DELAY);
+	PORTB = BCDTABLE[digito2];
+ 254:	fb 01       	movw	r30, r22
+ 256:	e0 50       	subi	r30, 0x00	; 0
+ 258:	ff 4f       	sbci	r31, 0xFF	; 255
+ 25a:	60 81       	ld	r22, Z
+ 25c:	65 b9       	out	0x05, r22	; 5
+	PORTC = 0b00000010;
+ 25e:	62 e0       	ldi	r22, 0x02	; 2
+ 260:	68 b9       	out	0x08, r22	; 8
+ 262:	ef e0       	ldi	r30, 0x0F	; 15
+ 264:	f7 e2       	ldi	r31, 0x27	; 39
+ 266:	31 97       	sbiw	r30, 0x01	; 1
+ 268:	f1 f7       	brne	.-4      	; 0x266 <showDisplays+0x2c>
+ 26a:	00 c0       	rjmp	.+0      	; 0x26c <showDisplays+0x32>
+ 26c:	00 00       	nop
+	_delay_ms(DELAY);
+	PORTB = BCDTABLE[digito3];
+ 26e:	fa 01       	movw	r30, r20
+ 270:	e0 50       	subi	r30, 0x00	; 0
+ 272:	ff 4f       	sbci	r31, 0xFF	; 255
+ 274:	40 81       	ld	r20, Z
+ 276:	45 b9       	out	0x05, r20	; 5
+	PORTC = 0b00000100;
+ 278:	44 e0       	ldi	r20, 0x04	; 4
+ 27a:	48 b9       	out	0x08, r20	; 8
+ 27c:	ef e0       	ldi	r30, 0x0F	; 15
+ 27e:	f7 e2       	ldi	r31, 0x27	; 39
+ 280:	31 97       	sbiw	r30, 0x01	; 1
+ 282:	f1 f7       	brne	.-4      	; 0x280 <showDisplays+0x46>
+ 284:	00 c0       	rjmp	.+0      	; 0x286 <showDisplays+0x4c>
+ 286:	00 00       	nop
+	_delay_ms(DELAY);
+	PORTB = BCDTABLE[digito4];
+ 288:	f9 01       	movw	r30, r18
+ 28a:	e0 50       	subi	r30, 0x00	; 0
+ 28c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 28e:	20 81       	ld	r18, Z
+ 290:	25 b9       	out	0x05, r18	; 5
+	PORTC = 0b00001000;
+ 292:	28 e0       	ldi	r18, 0x08	; 8
+ 294:	28 b9       	out	0x08, r18	; 8
+ 296:	ef e0       	ldi	r30, 0x0F	; 15
+ 298:	f7 e2       	ldi	r31, 0x27	; 39
+ 29a:	31 97       	sbiw	r30, 0x01	; 1
+ 29c:	f1 f7       	brne	.-4      	; 0x29a <showDisplays+0x60>
+ 29e:	00 c0       	rjmp	.+0      	; 0x2a0 <showDisplays+0x66>
+ 2a0:	00 00       	nop
+	_delay_ms(DELAY);
+	PORTB = BCDTABLE[digito1];
+ 2a2:	95 b9       	out	0x05, r25	; 5
+	PORTC = 0b00000001;
+ 2a4:	88 b9       	out	0x08, r24	; 8
+ 2a6:	08 95       	ret
+
+000002a8 <main>:
+}
+
+
+int main(void)
+{
+ 2a8:	cf 93       	push	r28
+ 2aa:	df 93       	push	r29
+ 2ac:	00 d0       	rcall	.+0      	; 0x2ae <main+0x6>
+ 2ae:	00 d0       	rcall	.+0      	; 0x2b0 <main+0x8>
+ 2b0:	00 d0       	rcall	.+0      	; 0x2b2 <main+0xa>
+ 2b2:	cd b7       	in	r28, 0x3d	; 61
+ 2b4:	de b7       	in	r29, 0x3e	; 62
+	uint16_t contador = 0;
+ 2b6:	1a 82       	std	Y+2, r1	; 0x02
+ 2b8:	19 82       	std	Y+1, r1	; 0x01
+	uint8_t digito1 = 0;
+ 2ba:	1b 82       	std	Y+3, r1	; 0x03
+	uint8_t digito2 = 0;
+ 2bc:	1c 82       	std	Y+4, r1	; 0x04
+	uint8_t digito3 = 0;
+ 2be:	1d 82       	std	Y+5, r1	; 0x05
+	uint8_t digito4 = 0;
+ 2c0:	1e 82       	std	Y+6, r1	; 0x06
+	uint8_t start = 0;
+
+	
+	DDRB = 0xFF; // Seteamos todos los puertos de B como Output
+ 2c2:	8f ef       	ldi	r24, 0xFF	; 255
+ 2c4:	84 b9       	out	0x04, r24	; 4
+	DDRC = 0x0F; // Seteamos los primero 4 puertos de C como Output
+ 2c6:	8f e0       	ldi	r24, 0x0F	; 15
+ 2c8:	87 b9       	out	0x07, r24	; 7
+	// Los primeros 4 puertos los utilizamos para definir que segmento mostramos en ese instante de tiempo
+	
+	// Para los pulsadores de STOP, START y RESET.
+	DDRD = 0x00;
+ 2ca:	1a b8       	out	0x0a, r1	; 10
+	uint16_t contador = 0;
+	uint8_t digito1 = 0;
+	uint8_t digito2 = 0;
+	uint8_t digito3 = 0;
+	uint8_t digito4 = 0;
+	uint8_t start = 0;
+ 2cc:	f1 2c       	mov	r15, r1
+	
+    while (1) 
+    {
+		// Chequear el RESET.
+		// Si el PIND0 esta en 1 (y todos los demas en 0)
+		if (debounce(PIND0)) {
+ 2ce:	80 e0       	ldi	r24, 0x00	; 0
+ 2d0:	0e 94 4b 00 	call	0x96	; 0x96 <debounce>
+ 2d4:	88 23       	and	r24, r24
+ 2d6:	31 f0       	breq	.+12     	; 0x2e4 <main+0x3c>
+			contador = 0;
+ 2d8:	1a 82       	std	Y+2, r1	; 0x02
+ 2da:	19 82       	std	Y+1, r1	; 0x01
+			digito1=0;
+ 2dc:	1b 82       	std	Y+3, r1	; 0x03
+			digito2=0;
+ 2de:	1c 82       	std	Y+4, r1	; 0x04
+			digito3=0;
+ 2e0:	1d 82       	std	Y+5, r1	; 0x05
+			digito4=0;
+ 2e2:	1e 82       	std	Y+6, r1	; 0x06
+			
+		}
+		// START
+		if (debounce(PIND1)) {
+ 2e4:	81 e0       	ldi	r24, 0x01	; 1
+ 2e6:	0e 94 4b 00 	call	0x96	; 0x96 <debounce>
+ 2ea:	88 23       	and	r24, r24
+ 2ec:	11 f0       	breq	.+4      	; 0x2f2 <main+0x4a>
+			start = 1;
+ 2ee:	ff 24       	eor	r15, r15
+ 2f0:	f3 94       	inc	r15
+		}
+		// STOP
+		if (debounce(PIND2)) {
+ 2f2:	82 e0       	ldi	r24, 0x02	; 2
+ 2f4:	0e 94 4b 00 	call	0x96	; 0x96 <debounce>
+ 2f8:	81 11       	cpse	r24, r1
+			start = 0;	
+ 2fa:	f1 2c       	mov	r15, r1
+		}
+		if (start) {
+ 2fc:	ff 20       	and	r15, r15
+ 2fe:	a9 f0       	breq	.+42     	; 0x32a <main+0x82>
+			separarDigitos(&contador, &digito1, &digito2, &digito3, &digito4);
+ 300:	8e 01       	movw	r16, r28
+ 302:	0a 5f       	subi	r16, 0xFA	; 250
+ 304:	1f 4f       	sbci	r17, 0xFF	; 255
+ 306:	9e 01       	movw	r18, r28
+ 308:	2b 5f       	subi	r18, 0xFB	; 251
+ 30a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 30c:	ae 01       	movw	r20, r28
+ 30e:	4c 5f       	subi	r20, 0xFC	; 252
+ 310:	5f 4f       	sbci	r21, 0xFF	; 255
+ 312:	be 01       	movw	r22, r28
+ 314:	6d 5f       	subi	r22, 0xFD	; 253
+ 316:	7f 4f       	sbci	r23, 0xFF	; 255
+ 318:	ce 01       	movw	r24, r28
+ 31a:	01 96       	adiw	r24, 0x01	; 1
+ 31c:	0e 94 76 00 	call	0xec	; 0xec <separarDigitos>
+			contador++;
+ 320:	89 81       	ldd	r24, Y+1	; 0x01
+ 322:	9a 81       	ldd	r25, Y+2	; 0x02
+ 324:	01 96       	adiw	r24, 0x01	; 1
+ 326:	9a 83       	std	Y+2, r25	; 0x02
+ 328:	89 83       	std	Y+1, r24	; 0x01
+		}
+		showDisplays(digito1, digito2, digito3, digito4);
+ 32a:	2e 81       	ldd	r18, Y+6	; 0x06
+ 32c:	30 e0       	ldi	r19, 0x00	; 0
+ 32e:	4d 81       	ldd	r20, Y+5	; 0x05
+ 330:	50 e0       	ldi	r21, 0x00	; 0
+ 332:	6c 81       	ldd	r22, Y+4	; 0x04
+ 334:	70 e0       	ldi	r23, 0x00	; 0
+ 336:	8b 81       	ldd	r24, Y+3	; 0x03
+ 338:	90 e0       	ldi	r25, 0x00	; 0
+ 33a:	0e 94 1d 01 	call	0x23a	; 0x23a <showDisplays>
+	}
+ 33e:	c7 cf       	rjmp	.-114    	; 0x2ce <main+0x26>
+
+00000340 <__umulhisi3>:
+ 340:	a2 9f       	mul	r26, r18
+ 342:	b0 01       	movw	r22, r0
+ 344:	b3 9f       	mul	r27, r19
+ 346:	c0 01       	movw	r24, r0
+ 348:	a3 9f       	mul	r26, r19
+ 34a:	70 0d       	add	r23, r0
+ 34c:	81 1d       	adc	r24, r1
+ 34e:	11 24       	eor	r1, r1
+ 350:	91 1d       	adc	r25, r1
+ 352:	b2 9f       	mul	r27, r18
+ 354:	70 0d       	add	r23, r0
+ 356:	81 1d       	adc	r24, r1
+ 358:	11 24       	eor	r1, r1
+ 35a:	91 1d       	adc	r25, r1
+ 35c:	08 95       	ret
+
+0000035e <_exit>:
+ 35e:	f8 94       	cli
+
+00000360 <__stop_program>:
+ 360:	ff cf       	rjmp	.-2      	; 0x360 <__stop_program>

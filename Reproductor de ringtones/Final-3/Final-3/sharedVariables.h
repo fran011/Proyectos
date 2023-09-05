@@ -1,0 +1,1 @@
+extern char *rtttl_library[];
